@@ -20,13 +20,16 @@ public class BaseTest {
 
     @BeforeMethod
     @Parameters({"BaseURL"})
-    public void launchBrowser() {
+    public void launchBrowser(String BaseURL) {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.get(url);
+        url = BaseURL;
+        navigateToPage();
     }
+
+
 
     @AfterMethod
     public void closeBrowser() {
