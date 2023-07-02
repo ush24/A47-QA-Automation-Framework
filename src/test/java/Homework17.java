@@ -19,6 +19,7 @@ public class Homework17 extends BaseTest{
         clickAddToBtn();
         choosePlayList();
         Assert.assertTrue(getNotificationText().contains(newSongAddedNotificationText));
+        closeBrowser();
     }
         public void searchSong(String songTitleKeyword) throws InterruptedException
         {
