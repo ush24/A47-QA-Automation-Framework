@@ -10,6 +10,7 @@ import java.time.Duration;
 
 public class BaseTest {
     public static WebDriver driver = null;
+
     public static String url="https://qa.koel.app/";
 
 
