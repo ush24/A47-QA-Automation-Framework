@@ -1,3 +1,4 @@
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -8,12 +9,12 @@ import java.time.Duration;
 
 public class LoginTests extends BaseTest {
     @Test(dataProvider = "IncorrectLoginProviders")
-    public void LoginEmptyEmailPasswordTest(String email,String password) throws InterruptedException{
+    public void LoginEmptyEmailPasswordTest(String email, String password) throws InterruptedException {
         openLoginUrl();
         provideEmail(email);
         providePassword(password);
         clickSubmit();
-        /*
+
 //      Added ChromeOptions argument below to fix websocket error
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
@@ -21,6 +22,7 @@ public class LoginTests extends BaseTest {
         WebDriver driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         Assert.assertEquals(driver.getCurrentUrl(), url);
-        driver.quit();*/
+        driver.quit();
     }
 }
+
