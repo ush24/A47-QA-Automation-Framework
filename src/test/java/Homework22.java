@@ -9,7 +9,7 @@ public class Homework22 extends BaseTest{
     @Test
     public void renamePlayList()
     {
-        String playlistName=" Test pro Playlist";
+        String playlistName="Test pro Playlist";
         LoginPage loginPage=new LoginPage(driver);
         HomePage homePage=new HomePage(driver);
         loginPage.login();
