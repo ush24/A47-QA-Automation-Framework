@@ -17,6 +17,8 @@
             <class name="BasePage"/>
             <class name="LoginPage"/>
             <class name="HomePage"/>
+            <class name="Homework23"/>
+
 
         </classes>
     </test>
