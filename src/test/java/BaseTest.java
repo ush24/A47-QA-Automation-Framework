@@ -44,7 +44,8 @@ public class BaseTest {
     public static  WebDriver pickBrowser(String browser) throws MalformedURLException {
         DesiredCapabilities caps = new DesiredCapabilities();
         String gridURL = "http://192.168.1.9:4444";
-        switch (browser) {
+        switch (browser)
+        {
             case "MicrosoftEdge":
                 WebDriverManager.edgedriver().setup();
                 EdgeOptions edgeOptions = new EdgeOptions();

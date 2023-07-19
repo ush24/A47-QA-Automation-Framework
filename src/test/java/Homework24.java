@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 import java.net.MalformedURLException;
 import java.time.Duration;
 
-public class Homework24 extends BaseTest {
+public class Homework24 extends BaseTest  {
     @Test
     public void registrationNavigation() throws MalformedURLException
     {
