@@ -37,7 +37,6 @@ public class BaseTest {
     @BeforeMethod
     @Parameters({"BaseURL"})
     public void launchBrowser() throws MalformedURLException{
-
        threaddriver.set(pickBrowser(System.getProperty("browser")));
        wait=new WebDriverWait(getDriver(),Duration.ofSeconds(10));
        actions = new Actions(getDriver());

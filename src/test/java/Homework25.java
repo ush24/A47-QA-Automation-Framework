@@ -16,6 +16,7 @@ public class Homework25 extends BaseTest{
         clickSubmit();
         Assert.assertEquals(driver.getCurrentUrl(),url);
         teardown();
+
         /*driver=pickBrowser("grid-edge");
         String Url = "https://qa.koel.app/";
         driver.get(Url);
