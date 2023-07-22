@@ -11,6 +11,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.*;
 
 import java.net.MalformedURLException;
@@ -20,6 +21,10 @@ import java.time.Duration;
 
 public class BaseTest {
     public static WebDriver driver = null;
+    public static WebDriverWait wait=null;
+    public static Actions actions = null;
+
+    public static ThreadLocal<WebDriver> threaddriver=new ThreadLocal<>();
 
 
     public static String url="https://qa.koel.app/";
@@ -31,15 +36,25 @@ public class BaseTest {
 
     @BeforeMethod
     @Parameters({"BaseURL"})
-    public void launchBrowser(String BaseURL) throws MalformedURLException{
+    public void launchBrowser() throws MalformedURLException{
 
-        driver= pickBrowser(BaseURL);
+       threaddriver.set(pickBrowser(System.getProperty("browser")));
+       wait=new WebDriverWait(getDriver(),Duration.ofSeconds(10));
+       actions = new Actions(getDriver());
+       getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+       navigateToPage();
+
+       // driver= pickBrowser(BaseURL);
        // ChromeOptions options = new ChromeOptions();
         //options.addArguments("--remote-allow-origin =*");
         //driver = new ChromeDriver(options);
         //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         //url = BaseURL;
        // navigateToPage();
+    }
+    public static WebDriver getDriver()
+    {
+      return threaddriver.get();
     }
     public static  WebDriver pickBrowser(String browser) throws MalformedURLException {
         DesiredCapabilities caps = new DesiredCapabilities();
@@ -72,7 +87,11 @@ public class BaseTest {
     public void closeBrowser() {
         driver.quit();
     }
-
+    public void teardown()
+    {
+        threaddriver.get().close();
+        threaddriver.remove();
+    }
     public static void navigateToPage() {
         driver.get(url);
     }
