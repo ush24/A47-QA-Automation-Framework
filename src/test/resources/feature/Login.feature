@@ -6,4 +6,4 @@ Feature: Login feature
     When I enter email "demo@class.com"
     And I enter password "te$t$tudent"
     And I submit
-     Then I am logged in
+    Then I am logged in

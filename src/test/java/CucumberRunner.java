@@ -1,6 +1,8 @@
-import io.cucumber.testing.TestNGCucumberRunner;
+import io.cucumber.testng.AbstractTestNGCucumberTests;
+import io.cucumber.testng.CucumberOptions;
+import io.cucumber.testng.TestNGCucumberRunner;
 import org.testng.annotations.*;
-@CucuberOptions(feature={"src/test/resources/features/Login.feature"})
+@CucumberOptions (features={"src/test/resources/features/Login.feature"})
 public class CucumberRunner extends AbstractTestNGCucumberTests {
     private TestNGCucumberRunner testNGCucumberRunner;
     @BeforeClass(alwaysRun = true)
