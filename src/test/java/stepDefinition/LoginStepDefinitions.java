@@ -12,8 +12,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
-
 import java.time.Duration;
 
 
@@ -33,7 +31,7 @@ public class LoginStepDefinitions  {
 
     }
     @After
-    @And("I open Login page")
+    @And("I open Login Page")
     public void openLoginPage()
     {
         driver.get("htts://bbb.testpro.io");
@@ -48,7 +46,7 @@ public class LoginStepDefinitions  {
      {
          wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[type='password']"))).sendKeys(password);
      }
-    @And("I submit ")
+    @And("I submit")
     public void clickSubmit()
     {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[type='submit']"))).click();
@@ -58,5 +56,4 @@ public class LoginStepDefinitions  {
     {
         Assert.assertTrue(wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("img.avatar"))).isDisplayed());
     }
-
 }

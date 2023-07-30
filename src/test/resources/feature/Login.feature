@@ -1,5 +1,4 @@
 Feature: Login feature
-
   Scenario: Login Success
     Given I open browser
     And I open Login Page
