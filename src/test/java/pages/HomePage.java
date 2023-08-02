@@ -36,6 +36,8 @@ public class HomePage extends BasePage {
     private WebElement choosePlaylist;
     @FindBy(css = "img[class='avatar']")
     private WebElement avatarIcon;
+    @FindBy(css = "div[class='dialog']>div>nav>button[class='ok']")
+    private WebElement confirmationOkBtn;
     public HomePage doubleClickPlaylist() {
         doubleClick(firstPlaylist);
         return this;
@@ -51,7 +53,7 @@ public class HomePage extends BasePage {
         return findElement(newPlaylist).isDisplayed();
     }
     public HomePage openPlaylist() {
-        click(clickPlaylist);
+        click(firstPlaylist);
         return this;
     }
     public HomePage deletePlaylistBtn() {
@@ -84,6 +86,10 @@ public class HomePage extends BasePage {
     }
     public HomePage choosePlaylist() throws InterruptedException {
         click(choosePlaylist);
+        return this;
+    }
+    public HomePage clickonConfirmationOkBtn() throws InterruptedException {
+        click(confirmationOkBtn);
         return this;
     }
     public String notificationMessage() {

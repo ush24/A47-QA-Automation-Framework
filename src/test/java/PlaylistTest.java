@@ -1,27 +1,33 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
 
 public class PlaylistTest extends BaseTest {
+    String newPlaylistName = "Testing Playlist";
     @Test
     public void renamePlaylist() {
-        String playlistName = "Testing Playlist";
+
         LoginPage loginPage = new LoginPage(getDriver());
         HomePage homePage = new HomePage(getDriver());
         loginPage.login();
-        homePage.doubleClickPlaylist()
-                .newPlaylistName(playlistName);
-        Assert.assertTrue(homePage.playlistIsDisplayed(playlistName));
+        homePage.doubleClickPlaylist();
+        enterNewPlayListName();
+        Assert.assertTrue(doesPlayListExist());
     }
     @Test
-    public void deletePlaylist() {
+    public void deletePlaylist() throws InterruptedException {
         String deleteMsg = "Deleted playlist";
         LoginPage loginPage = new LoginPage(getDriver());
         HomePage homePage = new HomePage(getDriver());
         loginPage.login();
         homePage.openPlaylist();
         homePage.deletePlaylistBtn();
+        homePage.clickonConfirmationOkBtn();
         homePage.getDeleteMsg();
         Assert.assertTrue(homePage.getDeleteMsg().contains(deleteMsg));
     }
@@ -39,5 +45,16 @@ public class PlaylistTest extends BaseTest {
         homePage.clickAddTo();
         homePage.choosePlaylist();
         Assert.assertTrue(homePage.notificationMessage().contains(notificationText));
+    }
+    public boolean doesPlayListExist() {
+        WebElement playListElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[text()='" + newPlaylistName + "']")));
+        return playListElement.isDisplayed();
+    }
+    public void enterNewPlayListName(){
+        WebElement playListInputField=wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[name='name']")));
+        playListInputField.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.BACK_SPACE));
+        playListInputField.sendKeys(newPlaylistName);
+        playListInputField.sendKeys(Keys.ENTER);
+
     }
 }
