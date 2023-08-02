@@ -18,15 +18,23 @@ public class BasePage {
     public BasePage(WebDriver givenDriver) {
         driver = givenDriver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        //actions = new Actions(driver);
+        actions = new Actions(driver);
         PageFactory.initElements(driver, this);
     }
-
-    public WebElement findElement(By locator) {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    protected WebElement findElement(WebElement webElement) {
+        return wait.until(ExpectedConditions.visibilityOf(webElement));
     }
-
-    public void doubleClick (By locator) {
-        actions.doubleClick(findElement(locator)).perform();
+    protected void click(WebElement webElement) {
+        wait.until(ExpectedConditions.elementToBeClickable(webElement)).click();
+    }
+    protected void contextClick(WebElement webElement) {
+        actions.contextClick(findElement(webElement)).perform();
+    }
+    protected void doubleClick(WebElement webElement) {
+        actions.doubleClick(findElement(webElement)).perform();
+    }
+    By overlayLocator = By.cssSelector(".overlay.loading");
+    protected void waitForOverlay() {
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(overlayLocator));
     }
 }
