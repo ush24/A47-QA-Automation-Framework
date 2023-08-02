@@ -30,11 +30,10 @@ public class LoginStepDefinitions  {
         wait= new WebDriverWait(driver, Duration.ofSeconds(10));
 
     }
-    @After
     @And("I open Login Page")
     public void openLoginPage()
     {
-        driver.get("htts://bbb.testpro.io");
+        driver.get("https://qa.koel.app/");
     }
     @And("I enter email {string}")
     public void i_enter_email(String email)
