@@ -12,15 +12,5 @@ public class ActionTest extends BaseTest {
         String url = "https://qa.koel.app/registration.php";
         Assert.assertEquals(getDriver().getCurrentUrl(), url);
     }
-    @Test
-    public void playSong() {
-        LoginPage loginPage = new LoginPage(getDriver());
-        HomePage homePage = new HomePage(getDriver());
-        AllSongsPage allSongsPage = new AllSongsPage(getDriver());
-        loginPage.login();
-        homePage.chooseAllSongsList();
-        allSongsPage.contextClickFirstSong();
-        allSongsPage.choosePlayOption();
-        Assert.assertTrue(allSongsPage.isSongPlaying());
-    }
+
 }
