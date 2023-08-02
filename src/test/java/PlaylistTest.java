@@ -33,7 +33,7 @@ public class PlaylistTest extends BaseTest {
         HomePage homePage = new HomePage(getDriver());
 
         loginPage.login();
-        homePage.searchSong("Lobo");
+        homePage.searchSong("Pluto");
         homePage.clickViewAll();
         homePage.selectFirstSongResult();
         homePage.clickAddTo();

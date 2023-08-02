@@ -32,7 +32,7 @@ public class HomePage extends BasePage {
     private WebElement firstSongResult;
     @FindBy(css = "button.btn-add-to")
     private WebElement addToButton;
-    @FindBy(xpath = "//section[@id = 'songResultsWrapper']//li[contains(text(), 'Epic Playlist')]")
+    @FindBy(xpath = "//section[@id = 'songResultsWrapper']//li[contains(text(), 'Test Pro Edited Playlist 2')]")
     private WebElement choosePlaylist;
     @FindBy(css = "img[class='avatar']")
     private WebElement avatarIcon;
