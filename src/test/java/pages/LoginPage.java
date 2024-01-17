@@ -31,4 +31,7 @@ public class LoginPage extends BasePage {
         submitButtonLocator.click();
         return this;
     }
+    public void login() {
+        provideEmail("demo@class.com").providePassword("te$t$tudent").clickSubmit();
+    }
 }

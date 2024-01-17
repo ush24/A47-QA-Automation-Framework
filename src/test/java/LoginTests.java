@@ -15,10 +15,8 @@ public class  LoginTests extends BaseTest {
     public void LoginValidEmailPasswordTest() {
         LoginPage loginPage = new LoginPage(getDriver());
         HomePage homePage = new HomePage(getDriver());
-
-        loginPage.provideEmail("demo@class.com").providePassword("te$t$tudent").clickSubmit();
-
-        Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
+        loginPage.login();
+       Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
 
     }
 }

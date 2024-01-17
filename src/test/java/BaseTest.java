@@ -58,6 +58,9 @@ public class BaseTest {
     @Parameters({"BaseURL"})
     public void launchBrowser() throws MalformedURLException{
        threaddriver.set(pickBrowser(System.getProperty("browser")));
+        getDriver().manage().window().maximize();
+        getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        url = "https://qa.koel.app/";
        wait=new WebDriverWait(getDriver(),Duration.ofSeconds(10));
        actions = new Actions(getDriver());
        getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
